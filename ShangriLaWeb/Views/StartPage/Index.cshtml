@@ -1,0 +1,11 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model ShangriLaWeb.Models.Pages.StartPage
+
+<h1 @Html.EditAttributes(x => x.Heading)>
+    @(Model.Heading ?? Model.PageName)
+</h1>
+<div>
+  @Html.PropertyFor(m => m.MainBody)
+</div>
