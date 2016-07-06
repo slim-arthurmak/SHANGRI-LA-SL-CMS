@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shangri-La - Index</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <!-- to avoid stripping of previous line-->
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <style>
+      body {
+        font-family: arial, helvetica, sans-serif;
+      }
+      
+      .wrapper {
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        margin-bottom: 30px;
+      }
+      
+      h1 {
+        font-size: 22px;
+        text-align: center;
+      }
+      
+      h2 {
+        font-size: 16px;
+        padding: 10px 20px;
+        background-color: #ddd;
+        margin: 0;
+        border-bottom: 1px solid #aaa;
+      }
+      
+      li > a {
+        font-size: 12px;
+        color: #00f;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Shangri-La SL</h1>
+    <div class="wrapper">
+      <h2>Pages</h2>
+      <ol id="pages">
+        <script type="text/javascript">
+          $(document).ready(function(e) {
+            $.ajax({
+              url: 'json/pages.json',
+              type: 'GET',
+              dataType: 'json',
+              beforeSend: function() {
+              },
+              success: function(data) {
+                for (var i = 0; i < data.length; i++) {
+                  var $li = "<li><a href='" + data[i].href + "' target='_blank'>" + data[i].name + "</a>";
+                  $('#pages').append($li);
+                }
+              },
+              error: function() {
+              },
+              complete: function() {
+              }
+            });
+          });
+        </script>
+      </ol>
+    </div>
+    <div class="wrapper">
+      <h2>Modules    </h2>
+      <ol id="modules">
+        <script type="text/javascript">
+          $(document).ready(function(e) {
+            $.ajax({
+              url: 'json/modules.json',
+              type: 'GET',
+              dataType: 'json',
+              beforeSend: function() {
+              },
+              success: function(data) {
+                for (var i = 0; i < data.length; i++) {
+                  var $li = "<li><a href='" + data[i].href + "' target='_blank'>" + data[i].name + "</a>";
+                  $('#modules').append($li);
+                }
+              },
+              error: function() {
+              },
+              complete: function() {
+              }
+            });
+          });
+        </script>
+      </ol>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+﻿@using EPiServer.Framework.Web.Mvc.Html
+@using EPiServer.Core
+@using ShangriLaWeb.Models.Pages;
+@using ShangriLaWeb.Models.ViewModels;
+@using ShangriLaWeb.Helpers
+
+@model IPageViewModel<SitePageData>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@Model.CurrentPage.Name</title>
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/bootstrap.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/bootstrap-responsive.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/media.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/style.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/editmode.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Static/js/jquery.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Static/js/bootstrap.js")"></script>
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/vendors.css")"/>
+    <link rel="stylesheet" href= "@Url.Content("~/Content/css/base.css")"/>
+    <link rel="stylesheet" href= "@Url.Content("~/Content/css/modules.css")"/>
+</head>
+<body>
+    @Html.RenderEPiServerQuickNavigator()
+    @Html.FullRefreshPropertiesMetaData()
+    <div class="site-wrapper">
+        @if (!Model.Layout.HideHeader)
+        {
+            Html.RenderPartial("Header", Model);
+        }
+        @RenderBody()
+        @if (!Model.Layout.HideHeader)
+        {
+            Html.RenderPartial("Footer", Model);
+        }
+    </div>
+    @Html.RequiredClientResources("Footer")
+    @Html.RenderExtendedScripts(Model.CurrentPage.Scripts)
+</body>
+
+</html>

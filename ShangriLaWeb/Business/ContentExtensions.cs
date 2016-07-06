@@ -6,7 +6,7 @@ using EPiServer.Framework.Web;
 using EPiServer.ServiceLocation;
 using EPiServer;
 
-namespace AlloyTraining.Business
+namespace ShangriLaWeb.Business
 {
     /// <summary>
     /// Extension methods for content

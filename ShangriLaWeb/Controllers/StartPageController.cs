@@ -7,17 +7,18 @@ using EPiServer.Framework.DataAnnotations;
 using EPiServer.Web.Mvc;
 
 using ShangriLaWeb.Models.Pages;
+using ShangriLaWeb.Models.ViewModels;
 
 namespace ShangriLaWeb.Controllers
 {
-    public class StartPageController : PageController<StartPage>
+    public class StartPageController : PageControllerBase<StartPage>
     {
         public ActionResult Index(StartPage currentPage)
         {
             /* Implementation of action. You can create your own view model class that you pass to the view or
              * you can pass the page type for simpler templates */
-
-            return View(currentPage);
+            DefaultPageViewModel<StartPage> model = new DefaultPageViewModel<StartPage>(currentPage);
+            return View(model);
         }
     }
 }

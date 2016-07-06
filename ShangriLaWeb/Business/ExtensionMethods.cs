@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace AlloyTraining.Business
+namespace ShangriLaWeb.Business
 {
     public static class ExtensionMethods
     {
@@ -51,7 +51,7 @@ namespace AlloyTraining.Business
 
             UrlBuilder pageURLBuilder = new UrlBuilder(page.LinkURL);
 
-            Global.UrlRewriteProvider.ConvertToExternal(pageURLBuilder, page.PageLink, UTF8Encoding.UTF8);
+            EPiServer.Global.UrlRewriteProvider.ConvertToExternal(pageURLBuilder, page.PageLink, UTF8Encoding.UTF8);
 
             string pageURL = pageURLBuilder.ToString();
 

@@ -5,16 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.WebPages;
 using EPiServer.Core;
 using EPiServer.ServiceLocation;
-using AlloyTraining.Business;
+using ShangriLaWeb.Business;
 using EPiServer.Web.Mvc.Html;
 using EPiServer.Web.Routing;
 using EPiServer;
+using ShangriLaWeb.Models.Media;
+using EPiServer.SpecializedProperties;
+using ShangriLaWeb.Models.Pages;
 
-
-namespace AlloyTraining.Helpers
+namespace ShangriLaWeb.Helpers
 {
     public static class HtmlHelpers
     {
@@ -33,7 +34,7 @@ namespace AlloyTraining.Helpers
         public static IHtmlString MenuList(
             this HtmlHelper helper,
             ContentReference rootLink,
-            Func<MenuItem, HelperResult> itemTemplate = null,
+            Func<MenuItem, System.Web.WebPages.HelperResult> itemTemplate = null,
             bool includeRoot = false,
             bool requireVisibleInMenu = true,
             bool requirePageTemplate = true)
@@ -74,18 +75,18 @@ namespace AlloyTraining.Helpers
         private static MenuItem CreateMenuItem(PageData page, ContentReference currentContentLink, List<ContentReference> pagePath, IContentLoader contentLoader, Func<IEnumerable<PageData>, IEnumerable<PageData>> filter)
         {
             var menuItem = new MenuItem(page)
-                {
-                    Selected = page.ContentLink.CompareToIgnoreWorkID(currentContentLink) ||
+            {
+                Selected = page.ContentLink.CompareToIgnoreWorkID(currentContentLink) ||
                                pagePath.Contains(page.ContentLink),
-                    HasChildren =
+                HasChildren =
                         new Lazy<bool>(() => filter(contentLoader.GetChildren<PageData>(page.ContentLink)).Any())
-                };
+            };
             return menuItem;
         }
 
-        private static Func<MenuItem, HelperResult> GetDefaultItemTemplate(HtmlHelper helper)
+        private static Func<MenuItem, System.Web.WebPages.HelperResult> GetDefaultItemTemplate(HtmlHelper helper)
         {
-            return x => new HelperResult(writer => writer.Write(helper.PageLink(x.Page)));
+            return x => new System.Web.WebPages.HelperResult(writer => writer.Write(helper.PageLink(x.Page)));
         }
 
         public class MenuItem
@@ -99,6 +100,77 @@ namespace AlloyTraining.Helpers
             public Lazy<bool> HasChildren { get; set; }
         }
 
+        const string CssFormat = "<link href=\"{0}\" rel=\"stylesheet\" />";
+        const string ScriptFormat = "<script src=\"{0}\"></script>";
+
+        public static MvcHtmlString RenderExtendedCSS(this HtmlHelper helper, string inline, LinkItemCollection cssFiles)
+        {
+            StringBuilder outputCSS = new StringBuilder(string.Empty);
+            StartPage start = ServiceLocator.Current.GetInstance<IContentLoader>().Get<StartPage>(ContentReference.StartPage);
+
+            if ((cssFiles == null || cssFiles.Count == 0) && start.CSSFiles != null)
+            {
+                AppendFiles(start.CSSFiles, outputCSS, CssFormat);
+            }
+            AppendFiles(cssFiles, outputCSS, CssFormat);
+
+            if (!string.IsNullOrWhiteSpace(inline))
+            {
+                outputCSS.AppendLine("<style>");
+                outputCSS.AppendLine(inline);
+                outputCSS.AppendLine("</style>");
+            }
+            else
+            {
+                string startCSS;
+
+                startCSS = start.CSS;
+                outputCSS.AppendLine("<style>");
+                outputCSS.AppendLine(startCSS);
+                outputCSS.AppendLine("</style>");
+            }
+
+            return new MvcHtmlString(outputCSS.ToString());
+        }
+
+        public static MvcHtmlString RenderExtendedScripts(this HtmlHelper helper, string inline)
+        {
+            StringBuilder outputCSS = new StringBuilder(string.Empty);
+
+            if (!string.IsNullOrWhiteSpace(inline))
+            {
+                outputCSS.AppendLine("<script type=\"text/javascript\">");
+                outputCSS.AppendLine(inline);
+                outputCSS.AppendLine("</script>");
+            }
+
+            return new MvcHtmlString(outputCSS.ToString());
+        }
+
+        public static MvcHtmlString RenderExtendedScriptFiles(this HtmlHelper helper, LinkItemCollection scriptFiles)
+        {
+            StringBuilder outputCSS = new StringBuilder(string.Empty);
+
+            AppendFiles(scriptFiles, outputCSS, ScriptFormat);
+
+            return new MvcHtmlString(outputCSS.ToString());
+        }
+
+        private static void AppendFiles(LinkItemCollection files, StringBuilder outputString, string formatString)
+        {
+            if (files != null && files.Count > 0)
+            {
+                foreach (var item in files)
+                {
+
+                    if (!string.IsNullOrEmpty(item.Href))
+                    {
+                        outputString.AppendLine(string.Format(formatString, item.Href));
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Writes an opening <![CDATA[ <a> ]]> tag to the response if the shouldWriteLink argument is true.
         /// Returns a ConditionalLink object which when disposed will write a closing <![CDATA[ </a> ]]> tag
@@ -108,7 +180,7 @@ namespace AlloyTraining.Helpers
         {
             if (shouldWriteLink)
             {
-                var linkTag = new System.Web.Mvc.TagBuilder("a");
+                var linkTag = new TagBuilder("a");
                 linkTag.Attributes.Add("href", url.ToHtmlString());
 
                 if (!string.IsNullOrWhiteSpace(title))
