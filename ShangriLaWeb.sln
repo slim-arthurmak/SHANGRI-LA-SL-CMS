@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShangriLaWeb", "ShangriLaWeb\ShangriLaWeb.csproj", "{B4624664-5E0B-489B-9FB1-46EF91899C42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShangriLa.EPiServer.Shared", "..\ShangriLa.EPiserver.Shared\ShangriLa.EPiServer.Shared.csproj", "{8336864F-03AB-4D4F-86A7-3E835266BC43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShangriLa.EPiServer.Shared", "ShangriLa.EPiserver.Shared\ShangriLa.EPiServer.Shared.csproj", "{8336864F-03AB-4D4F-86A7-3E835266BC43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -615,7 +615,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ShangriLa.EPiserver.Shared\ShangriLa.EPiServer.Shared.csproj">
+    <ProjectReference Include="..\ShangriLa.EPiserver.Shared\ShangriLa.EPiServer.Shared.csproj">
       <Project>{8336864f-03ab-4d4f-86a7-3e835266bc43}</Project>
       <Name>ShangriLa.EPiServer.Shared</Name>
     </ProjectReference>
