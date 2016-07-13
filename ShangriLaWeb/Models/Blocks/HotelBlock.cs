@@ -33,5 +33,48 @@ namespace ShangriLaWeb.Models.Blocks
         [Display(Name = "Longitude", Order = 5)]
         public virtual string Longitude { get; set; }
 
+
+        [Display(Name = "Address", Order = 6)]
+        public virtual string Address { get; set; }
+
+        [Display(Name = "City", Order = 5)]
+        public virtual ContentReference City { get; set; }
+
+        [Display(Name = "Telephone", GroupName = "HotelContact", Description = "", Order = 1)]
+        public virtual string Phone { get; set; }
+
+        [Display( Name = "Fax", GroupName = "HotelContact", Description = "", Order = 2)]
+        public virtual string Fax { get; set; }
+
+        [Display(Name = "Email", GroupName = "HotelContact", Description = "", Order = 3)]
+        public virtual string Email { get; set; }
+
+        [Display(Name = "Check-in Time", Order = 10)]
+        public virtual string CheckInTime { get; set; }
+
+        [Display(Name = "Check-out Time", Order = 11)]
+        public virtual string CheckOutTime { get; set; }
+
+        [Display(Name = "Payment Options", Order = 12)]
+        public virtual ContentArea PaymentOptions { get; set; }
+
+        [Display(Name = "Facebook", GroupName = "Social Media", Description = "", Order = 1)]
+        public virtual string Facebook { get; set; }
+
+        [Display(Name = "Twitter", GroupName = "Social Media", Description = "", Order = 2)]
+        public virtual string Twitter { get; set; }
+
+        [Display(Name = "Youtube ", GroupName = "Social Media", Description = "", Order = 3)]
+        public virtual string Youtube { get; set; }
+
+        [Display(Name = "GooglePlus  ", GroupName = "Social Media", Description = "", Order = 4)]
+        public virtual string GooglePlus { get; set; }
+
+        [Display(Name = "Youku", GroupName = "Social Media", Description = "", Order = 5)]
+        public virtual string Youku { get; set; }
+
+        [Display(Name = "Weibo", GroupName = "Social Media", Description = "", Order = 5)]
+        public virtual string Weibo { get; set; }
+
     }
 }

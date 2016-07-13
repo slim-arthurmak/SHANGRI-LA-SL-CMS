@@ -1,5 +1,6 @@
 ﻿@using EPiServer.Core
 @using EPiServer.Web.Mvc.Html
+@using ShangriLaWeb.Business.Extensions;
 
 @model ShangriLaWeb.Models.ViewModels.PropertyPageViewModel
 
@@ -49,10 +50,25 @@
         </ul>
     </div>
 </sections>
-
 <div class="inpage-container">
-    @Html.PropertyFor(x => x.CurrentPage.ModuleContentArea)
+
+    @*@{
+            Html.RenderCustomContentArea(Model.CurrentPage.SectionContentArea);
+        }*@
+
+    @Html.PropertyFor(x => x.CurrentPage.SectionContentArea, new
+   {
+       //CustomTag = "ul",
+       //CssClass = "list",
+       //ChildrenCustomTagName = "li",
+       //ChildrenCssClass = "list_item",
+       //Tag = string.Empty,
+       HasContainer = false
+   })
 </div>
+
+
+
     <div class="room-contact-details">
         <div class="container">
             <ul class="room-contact-container row">

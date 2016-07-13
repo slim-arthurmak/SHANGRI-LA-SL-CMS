@@ -5,7 +5,7 @@ using EPiServer.ServiceLocation;
 using ShangriLaWeb.Business.Rendering;
 using EPiServer.Web;
 
-namespace AlloyDemoKit.Business.Initialization
+namespace ShangriLaWeb.Business.Initialization
 {
     /// <summary>
     /// Module for customizing templates and rendering.

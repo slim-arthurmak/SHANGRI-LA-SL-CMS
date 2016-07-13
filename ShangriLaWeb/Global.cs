@@ -1,6 +1,7 @@
 ﻿using EPiServer.DataAnnotations;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using EPiServer.Security;
 
 namespace ShangriLaWeb
 {
@@ -52,6 +53,7 @@ namespace ShangriLaWeb
             public const string Social = "Social";
 
             [Display(Name = "HotelSettings", Order = 14)]
+            [RequiredAccess(AccessLevel.Administer)]
             public const string HotelSettings = "HotelSettings";
         }
 

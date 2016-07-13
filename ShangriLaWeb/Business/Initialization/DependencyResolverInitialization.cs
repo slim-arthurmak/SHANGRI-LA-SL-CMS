@@ -26,7 +26,7 @@ namespace ShangriLaWeb.Business.Initialization
         {
             //Swap out the default ContentRenderer for our custom
             container.For<IContentRenderer>().Use<ErrorHandlingContentRenderer>();
-            container.For<ContentAreaRenderer>().Use<AlloyContentAreaRenderer>();
+            //container.For<ContentAreaRenderer>().Use<ShangriLaWebContentAreaRenderer>();
 
             //Implementations for custom interfaces can be registered here.
             container.For<IFileDataImporter>().Use<FileDataImporter>();

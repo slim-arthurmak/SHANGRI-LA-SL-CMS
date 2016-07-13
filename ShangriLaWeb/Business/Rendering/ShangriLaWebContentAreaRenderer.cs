@@ -12,7 +12,7 @@ namespace ShangriLaWeb.Business.Rendering
     /// <summary>
     /// Extends the default <see cref="ContentAreaRenderer"/> to apply custom CSS classes to each <see cref="ContentFragment"/>.
     /// </summary>
-    public class AlloyContentAreaRenderer : ContentAreaRenderer
+    public class ShangriLaWebContentAreaRenderer : ContentAreaRenderer
     {
         protected override string GetContentAreaItemCssClass(HtmlHelper htmlHelper, ContentAreaItem contentAreaItem)
         {

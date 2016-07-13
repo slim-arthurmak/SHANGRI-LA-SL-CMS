@@ -7,7 +7,7 @@ using EPiServer.SpecializedProperties;
 
 namespace ShangriLaWeb.Models.Pages
 {
-    [ContentType(DisplayName = "HotelLandingPage", GUID = "1112A3B4-2C44-4D2E-8E65-4C3802D92C69", Description = "Hotel Landing Page")]
+    [ContentType(GroupName = "Propety Landing Pages", DisplayName = "HotelLandingPage", GUID = "1112A3B4-2C44-4D2E-8E65-4C3802D92C69", Description = "Hotel Landing Page")]
     [AvailableContentTypes(Include = new[] { typeof(HotelPage) })]
     public class HotelLandingPage : SitePageData
     {

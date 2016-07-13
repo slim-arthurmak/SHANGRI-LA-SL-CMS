@@ -252,6 +252,7 @@
     <Compile Include="Business\Data\IFileDataImporter.cs" />
     <Compile Include="Business\EmailAddressAttribute.cs" />
     <Compile Include="Business\ExtensionMethods.cs" />
+    <Compile Include="Business\Extensions\ContentAreaExtensions.cs" />
     <Compile Include="Business\IModifyLayout.cs" />
     <Compile Include="Business\Initialization\BundleConfig.cs" />
     <Compile Include="Business\Initialization\CustomizedRenderingInitialization.cs" />
@@ -260,10 +261,12 @@
     <Compile Include="Business\Initialization\DisplayRegistryInitialization.cs" />
     <Compile Include="Business\Initialization\FileBasedEventsInitialization.cs" />
     <Compile Include="Business\Initialization\FilterConfig.cs" />
+    <Compile Include="Business\Migration\HotelPageMigrationStep.cs" />
     <Compile Include="Business\PageContextActionFilter.cs" />
     <Compile Include="Business\PageTypeExtensions.cs" />
     <Compile Include="Business\PageViewContextFactory.cs" />
-    <Compile Include="Business\Rendering\AlloyContentAreaRenderer.cs" />
+    <Compile Include="Business\Rendering\CustomContentAreaRenderer.cs" />
+    <Compile Include="Business\Rendering\ShangriLaWebContentAreaRenderer.cs" />
     <Compile Include="Business\Rendering\ErrorHandlingContentRenderer.cs" />
     <Compile Include="Business\Rendering\IContainerPage.cs" />
     <Compile Include="Business\Rendering\ICustomCssInContentArea.cs" />
@@ -274,6 +277,7 @@
     <Compile Include="Controllers\PreviewController.cs" />
     <Compile Include="Controllers\Pages\RoomSuiteListingPageController.cs" />
     <Compile Include="Controllers\Pages\RoomSuitePageController.cs" />
+    <Compile Include="Business\Extensions\EditorDescriptors\HotelBlockReferenceEditorDescriptor.cs" />
     <Compile Include="Models\Blocks\HotelHomepageContentBlockData.cs" />
     <Compile Include="Models\Blocks\RoomContentBlock.cs" />
     <Compile Include="Models\Blocks\RoomSuiteBlock.cs" />

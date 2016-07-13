@@ -1,20 +1,24 @@
-﻿using System;
-using EPiServer;
-using System.ComponentModel.DataAnnotations;
+﻿using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
-using EPiServer.SpecializedProperties;
 using EPiServer.ServiceLocation;
+using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 
+using ShangriLaWeb.Business.Extensions.EditorDescriptor;
+using ShangriLaWeb.Helpers;
 using ShangriLaWeb.Models.Blocks;
+
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShangriLaWeb.Models.Pages
 {
-    [ContentType(DisplayName = "HotelPage", GUID = "19EA638C-376D-4216-9353-9E34D4C07B05", Description = "Hotel Page")]
+    [ContentType(GroupName = "Propety Pages", DisplayName = "HotelPage", GUID = "19EA638C-376D-4216-9353-9E34D4C07B05", Description = "Hotel Page")]
     public class HotelPage : SitePageData
     {
+        /*
         [CultureSpecific]
         [Display(
             Name = "Main body",
@@ -33,13 +37,16 @@ namespace ShangriLaWeb.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 50)]
         public virtual string HotelType { get; set; }
+        */
 
         [Display(
-                  Name = "HotelBlock",
+                  Name = "Hotel Block",
                   Description = "Hotel Block",
                   GroupName = Global.GroupNames.HotelSettings,
                   Order = 1)]
+        [AllowedTypes(typeof(HotelBlock))]
         [UIHint(UIHint.Block)]
+        [Required]
         public virtual ContentReference HotelBlock { get; set; }
 
         [Display(Name = "Hero Banner Block",
@@ -52,11 +59,11 @@ namespace ShangriLaWeb.Models.Pages
 
         [AllowedTypes(new[] { typeof(OverviewContentBlock), typeof(RoomContentBlock) })]
         [Display(
-                  Name = "Module Content Area",
-                  Description = "Hotel Module Blocks",
+                  Name = "Section Content Area",
+                  Description = "Hotel Content Blocks",
                   GroupName = SystemTabNames.Content,
                   Order = 110)]
-        public virtual ContentArea ModuleContentArea { get; set; }
+        public virtual ContentArea SectionContentArea { get; set; }
 
 
         public override void SetDefaultValues(ContentType contentType)
