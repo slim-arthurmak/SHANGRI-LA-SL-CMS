@@ -49,9 +49,9 @@ namespace ShangriLaWeb.Models.Blocks
         public virtual string Title { get; set; }
 
         //[Required(ErrorMessage = "Alternate text is required.")]
-        [Display(Order = 4, Name = "Introduction", Description = "Introduction")]
+        [Display(Order = 6, Name = "Introduction", Description = "Introduction")]
         [UIHint(UIHint.Textarea)]
-        public virtual string Introduction { get; set; }
+        public virtual string ShortDescription { get; set; }
 
         //Sets the default property values
         public override void SetDefaultValues(ContentType contentType)

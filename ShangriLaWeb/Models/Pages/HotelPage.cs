@@ -6,6 +6,7 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
 using EPiServer.ServiceLocation;
+using EPiServer.Web;
 
 using ShangriLaWeb.Models.Blocks;
 
@@ -38,6 +39,7 @@ namespace ShangriLaWeb.Models.Pages
                   Description = "Hotel Block",
                   GroupName = Global.GroupNames.HotelSettings,
                   Order = 1)]
+        [UIHint(UIHint.Block)]
         public virtual ContentReference HotelBlock { get; set; }
 
         [Display(Name = "Hero Banner Block",
@@ -48,13 +50,14 @@ namespace ShangriLaWeb.Models.Pages
         //[AllowedTypes(typeof(MainCarouselBlock))]
         public virtual HeroBannerBlock HeroBanner { get; set; }
 
-        [AllowedTypes(new[] { typeof(HotelModuleBlock) })]
+        [AllowedTypes(new[] { typeof(OverviewContentBlock), typeof(RoomContentBlock) })]
         [Display(
                   Name = "Module Content Area",
                   Description = "Hotel Module Blocks",
                   GroupName = SystemTabNames.Content,
                   Order = 110)]
         public virtual ContentArea ModuleContentArea { get; set; }
+
 
         public override void SetDefaultValues(ContentType contentType)
         {
@@ -71,6 +74,5 @@ namespace ShangriLaWeb.Models.Pages
             }
                 
         }
-
     }
 }

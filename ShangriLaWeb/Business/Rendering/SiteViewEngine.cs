@@ -12,12 +12,20 @@ namespace ShangriLaWeb.Business.Rendering
         private static readonly string[] AdditionalPartialViewFormats = new[] 
             { 
                 TemplateCoordinator.BlockFolder + "{0}.cshtml",
-                TemplateCoordinator.PagePartialsFolder + "{0}.cshtml"
+                TemplateCoordinator.PagePartialsFolder + "{0}.cshtml",
+                "~/Views/Blocks/{1}/{0}.cshtml"
             };
+
+        private static readonly string[] AdditionalViewFormats = new[]
+        {
+            "~/Views/Pages/{1}/{0}.cshtml",
+            "~/Views/Media/{1}/{0}.cshtml"
+        };
 
         public SiteViewEngine()
         {
             PartialViewLocationFormats = PartialViewLocationFormats.Union(AdditionalPartialViewFormats).ToArray();
+            ViewLocationFormats = ViewLocationFormats.Union(AdditionalViewFormats).ToArray();
         }
     }
 }

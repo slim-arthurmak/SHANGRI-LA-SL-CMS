@@ -1,0 +1,76 @@
+[
+  {
+    "element": ".caption-container > .two-sided-line, .caption-container > .heading, .caption-container > .description, .caption-container > .read-more-droplink, .caption-container > .room-price",
+    "animation" : "fadeInUp"
+  },
+  {
+    "element": ".caption-container > .book-room",
+    "animation" : "fadeIn"
+  },
+  {
+    "element": ".whats-in-the-room .read-more-section-header",
+    "animation": "fadeInUp"
+  },
+  {
+    "element": ".whats-in-the-room .row",
+    "animation": "fadeIn",
+    "delay" : 1
+  },
+  {
+    "element": ".everything-you-need ul.everything-links > li",
+    "animation": "fadeInUp",
+    "delay" : 1
+  },
+  {
+    "element": ".trust-you-widget",
+    "animation": "fadeIn"
+  },
+  {
+    "element": ".horizon-club",
+    "animation": "fadeInUp"
+  },
+  {
+    "element": ".offers-list",
+    "animation": "fadeInUp"
+  },
+  {
+    "element": ".explore-other-rooms",
+    "animation": "fadeInUp"
+  },
+  {
+    "element": ".list-view-row",
+    "animation" : "fadeInUp"
+  },
+  {
+    "element": ".overview-container .section-heading, .overview-container .description",
+    "animation": "fadeIn"
+  },
+  {
+    "element": ".hotel-rooms-container .section-header .section-heading, .hotel-rooms-container .section-header .description",
+    "animation": "fadeIn"
+  },
+  {
+    "element": ".the-table .section-heading, .the-table .description",
+    "animation": "fadeIn"
+  },
+  {
+    "element": ".relax-reboot-refresh .section-header .section-heading, .relax-reboot-refresh .section-header .description",
+    "animation": "fadeIn"
+  },
+  {
+    "element": ".events-list .section-header .section-heading, .events-list .section-header .description",
+    "animation": "fadeIn"    
+  },
+  {
+    "element": ".gallery-section .section-heading, .gallery-section .description",
+    "animation": "fadeIn"    
+  },
+  {
+    "element": ".map-direction-container .section-heading, .map-direction-container .description",
+    "animation": "fadeIn"    
+  },
+  {
+    "element": ".hotel-offers-list .section-heading",
+    "animation": "fadeIn"    
+  }
+]

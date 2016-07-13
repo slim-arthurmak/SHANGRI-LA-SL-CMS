@@ -25,6 +25,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
@@ -191,6 +196,10 @@
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
       <Private>True</Private>
@@ -219,6 +228,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -228,11 +241,27 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
+    <Compile Include="Business\Channels\DisplayResolutionBase.cs" />
+    <Compile Include="Business\Channels\DisplayResolutions.cs" />
+    <Compile Include="Business\Channels\MobileChannel.cs" />
+    <Compile Include="Business\Channels\WebChannel.cs" />
     <Compile Include="Business\ContentExtensions.cs" />
+    <Compile Include="Business\ContentLocator.cs" />
+    <Compile Include="Business\Data\FileDataImporter.cs" />
+    <Compile Include="Business\Data\FileReader.cs" />
+    <Compile Include="Business\Data\IFileDataImporter.cs" />
+    <Compile Include="Business\EmailAddressAttribute.cs" />
     <Compile Include="Business\ExtensionMethods.cs" />
     <Compile Include="Business\IModifyLayout.cs" />
+    <Compile Include="Business\Initialization\BundleConfig.cs" />
+    <Compile Include="Business\Initialization\CustomizedRenderingInitialization.cs" />
+    <Compile Include="Business\Initialization\DependencyResolverInitialization.cs" />
+    <Compile Include="Business\Initialization\DisplayModesInitialization.cs" />
+    <Compile Include="Business\Initialization\DisplayRegistryInitialization.cs" />
+    <Compile Include="Business\Initialization\FileBasedEventsInitialization.cs" />
     <Compile Include="Business\Initialization\FilterConfig.cs" />
     <Compile Include="Business\PageContextActionFilter.cs" />
+    <Compile Include="Business\PageTypeExtensions.cs" />
     <Compile Include="Business\PageViewContextFactory.cs" />
     <Compile Include="Business\Rendering\AlloyContentAreaRenderer.cs" />
     <Compile Include="Business\Rendering\ErrorHandlingContentRenderer.cs" />
@@ -240,15 +269,22 @@
     <Compile Include="Business\Rendering\ICustomCssInContentArea.cs" />
     <Compile Include="Business\Rendering\SiteViewEngine.cs" />
     <Compile Include="Business\Rendering\TemplateCoordinator.cs" />
-    <Compile Include="Controllers\RoomSuiteListingPageController.cs" />
-    <Compile Include="Controllers\RoomSuitePageController.cs" />
+    <Compile Include="Business\StructureMapDependencyResolver.cs" />
+    <Compile Include="Controllers\Blocks\RoomContentBlockController.cs" />
+    <Compile Include="Controllers\PreviewController.cs" />
+    <Compile Include="Controllers\Pages\RoomSuiteListingPageController.cs" />
+    <Compile Include="Controllers\Pages\RoomSuitePageController.cs" />
+    <Compile Include="Models\Blocks\HotelHomepageContentBlockData.cs" />
+    <Compile Include="Models\Blocks\RoomContentBlock.cs" />
+    <Compile Include="Models\Blocks\RoomSuiteBlock.cs" />
+    <Compile Include="Models\ViewModels\BookingPanelModel.cs" />
     <Compile Include="Models\Blocks\CommonBlock.cs" />
     <Compile Include="Controllers\DefaultPageController.cs" />
-    <Compile Include="Controllers\HotelModuleBlockController.cs" />
+    <Compile Include="Controllers\Blocks\OverviewContentBlockController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\PagePartialController.cs" />
     <Compile Include="Controllers\StandardPageController.cs" />
-    <Compile Include="Controllers\HotelPageController.cs" />
+    <Compile Include="Controllers\Pages\HotelPageController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -264,8 +300,7 @@
     <Compile Include="Models\Blocks\HeroBannerBlock.cs" />
     <Compile Include="Models\Blocks\HotelBlock.cs" />
     <Compile Include="Models\Blocks\HotelHightlightsBlock.cs" />
-    <Compile Include="Models\Blocks\RoomModuleBlock.cs" />
-    <Compile Include="Models\Blocks\HotelModuleBlock.cs" />
+    <Compile Include="Models\Blocks\OverviewContentBlock.cs" />
     <Compile Include="Models\Blocks\PageListBlock.cs" />
     <Compile Include="Models\Blocks\SiteBlockData.cs" />
     <Compile Include="Models\Blocks\SiteLogotypeBlock.cs" />
@@ -287,11 +322,13 @@
     <Compile Include="Models\SiteContentType.cs" />
     <Compile Include="Models\SiteImageUrl.cs" />
     <Compile Include="Models\ViewModels\ContentRenderingErrorModel.cs" />
+    <Compile Include="Models\ViewModels\PropertyPageViewModel.cs" />
     <Compile Include="Models\ViewModels\DefaultPageViewModel.cs" />
     <Compile Include="Models\ViewModels\LayoutModel.cs" />
     <Compile Include="Models\ViewModels\PageListModel.cs" />
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Models\ViewModels\IPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\PreviewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -301,6 +338,7 @@
     <Content Include="Content\all-room-landing-list-view.html" />
     <Content Include="Content\all-room-landing-with-swipe.html" />
     <Content Include="Content\all-room-landing.html" />
+    <Content Include="Content\all-room-wings.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -308,6 +346,8 @@
     <Content Include="Content\css\base.css" />
     <Content Include="Content\css\modules.css" />
     <Content Include="Content\css\vendors.css" />
+    <Content Include="Content\dining-landing.html" />
+    <Content Include="Content\experience-landing.html" />
     <Content Include="Content\font\icon-fonts\shangrila-sl.svg" />
     <Content Include="Content\font\playfair-display-black\playfairdisplay-black-webfont.svg" />
     <Content Include="Content\font\playfair-display-bold\playfairdisplay-bold-webfont.svg" />
@@ -320,6 +360,7 @@
     <Content Include="Content\font\pluto-sans-medium\plutosansmedium1-webfont.svg" />
     <Content Include="Content\font\pluto-sans-regular\plutosansregular1-webfont.svg" />
     <Content Include="Content\font\pluto-sans-thin\plutosansthin1-webfont.svg" />
+    <Content Include="Content\hotel-landing-video-hero.html" />
     <Content Include="Content\hotel-landing-with-swipe.html" />
     <Content Include="Content\hotel-landing.html" />
     <Content Include="Content\img\bg\bg-horizon-club-mobile.png" />
@@ -327,6 +368,11 @@
     <Content Include="Content\img\bg\bg-restaurant-section.jpg" />
     <Content Include="Content\img\bg\bg-room-advisor.png" />
     <Content Include="Content\img\bg\bg-suites-tablet.png" />
+    <Content Include="Content\img\bg\dining-experiences-mothers-day-bg-tablet.jpg" />
+    <Content Include="Content\img\bg\dining-experiences-mothers-day-bg.jpg" />
+    <Content Include="Content\img\bg\dining-experiences-mothers-day-bg.png" />
+    <Content Include="Content\img\bg\dining-experiences-rice-dumpling-bg-tablet.jpg" />
+    <Content Include="Content\img\bg\dining-experiences-rice-dumpling-bg.jpg" />
     <Content Include="Content\img\bg\loader.gif" />
     <Content Include="Content\img\bg\placeholder.png" />
     <Content Include="Content\img\bg\room-landing-found-room-bg.jpg" />
@@ -346,10 +392,17 @@
     <Content Include="Content\js\vendors.js" />
     <Content Include="Content\js\waypoint.min.js" />
     <Content Include="Content\pagemodules\all-room-main-banner.html" />
+    <Content Include="Content\pagemodules\all-room-wings-banner.html" />
     <Content Include="Content\pagemodules\booking-panel-without-search.html" />
     <Content Include="Content\pagemodules\booking-panel.html" />
+    <Content Include="Content\pagemodules\dining-experiences.html" />
+    <Content Include="Content\pagemodules\dining-landing-main-banner.html" />
+    <Content Include="Content\pagemodules\dining-restaurants-bars.html" />
+    <Content Include="Content\pagemodules\dining-special-offers.html" />
     <Content Include="Content\pagemodules\events-listing.html" />
     <Content Include="Content\pagemodules\everything-you-need.html" />
+    <Content Include="Content\pagemodules\experience-landing-special-offers.html" />
+    <Content Include="Content\pagemodules\experience-types.html" />
     <Content Include="Content\pagemodules\explore-other-rooms.html" />
     <Content Include="Content\pagemodules\footer.html" />
     <Content Include="Content\pagemodules\get-more-carousel.html" />
@@ -367,6 +420,11 @@
     <Content Include="Content\pagemodules\img\bg\bg-restaurant-section.jpg" />
     <Content Include="Content\pagemodules\img\bg\bg-room-advisor.png" />
     <Content Include="Content\pagemodules\img\bg\bg-suites-tablet.png" />
+    <Content Include="Content\pagemodules\img\bg\dining-experiences-mothers-day-bg-tablet.jpg" />
+    <Content Include="Content\pagemodules\img\bg\dining-experiences-mothers-day-bg.jpg" />
+    <Content Include="Content\pagemodules\img\bg\dining-experiences-mothers-day-bg.png" />
+    <Content Include="Content\pagemodules\img\bg\dining-experiences-rice-dumpling-bg-tablet.jpg" />
+    <Content Include="Content\pagemodules\img\bg\dining-experiences-rice-dumpling-bg.jpg" />
     <Content Include="Content\pagemodules\img\bg\loader.gif" />
     <Content Include="Content\pagemodules\img\bg\placeholder.png" />
     <Content Include="Content\pagemodules\img\bg\room-landing-found-room-bg.jpg" />
@@ -382,6 +440,26 @@
     <Content Include="Content\pagemodules\img\content\carousel-left-image.jpg" />
     <Content Include="Content\pagemodules\img\content\circle-icon.png" />
     <Content Include="Content\pagemodules\img\content\diners-club-logo.png" />
+    <Content Include="Content\pagemodules\img\content\dining-blu-bar.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-experence-mother-day.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-experence-rice-dumpling.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-landing-hero.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-line-shop.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-lobby-court.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-nadaman.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-rose-veranda.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-shang-palace.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-special-offer-1.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-special-offer-2.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-the-line.jpg" />
+    <Content Include="Content\pagemodules\img\content\dining-the-waterfall.jpg" />
+    <Content Include="Content\pagemodules\img\content\experience-landing-hero.jpg" />
+    <Content Include="Content\pagemodules\img\content\experience-special-offer.png" />
+    <Content Include="Content\pagemodules\img\content\experience-type-2.jpg" />
+    <Content Include="Content\pagemodules\img\content\experience-type-3.jpg" />
+    <Content Include="Content\pagemodules\img\content\experience-type-4.jpg" />
+    <Content Include="Content\pagemodules\img\content\experience-type-5.jpg" />
+    <Content Include="Content\pagemodules\img\content\experience-type-6.jpg" />
     <Content Include="Content\pagemodules\img\content\experience1.jpg" />
     <Content Include="Content\pagemodules\img\content\experience2.jpg" />
     <Content Include="Content\pagemodules\img\content\explore-room1.jpg" />
@@ -417,6 +495,8 @@
     <Content Include="Content\pagemodules\img\content\mastercard-logo.png" />
     <Content Include="Content\pagemodules\img\content\meeting-conference-space.jpg" />
     <Content Include="Content\pagemodules\img\content\nadaman.jpg" />
+    <Content Include="Content\pagemodules\img\content\offer-1.jpg" />
+    <Content Include="Content\pagemodules\img\content\offer-2.jpg" />
     <Content Include="Content\pagemodules\img\content\paradise-found.jpg" />
     <Content Include="Content\pagemodules\img\content\pin-icon.png" />
     <Content Include="Content\pagemodules\img\content\right-side-bottom.jpg" />
@@ -437,6 +517,7 @@
     <Content Include="Content\pagemodules\img\content\room-listing-dummy-6.jpg" />
     <Content Include="Content\pagemodules\img\content\shangrila-logo.png" />
     <Content Include="Content\pagemodules\img\content\share-icon.png" />
+    <Content Include="Content\pagemodules\img\content\SL-video.mp4" />
     <Content Include="Content\pagemodules\img\content\standard-rooms-1.jpg" />
     <Content Include="Content\pagemodules\img\content\standard-rooms-2.jpg" />
     <Content Include="Content\pagemodules\img\content\standard-rooms-3.jpg" />
@@ -457,8 +538,10 @@
     <Content Include="Content\pagemodules\in-page-navigation.html" />
     <Content Include="Content\pagemodules\in-page-sections-hotel-landing-with-swipe.html" />
     <Content Include="Content\pagemodules\in-page-sections-hotel-landing.html" />
+    <Content Include="Content\pagemodules\main-banner-experience-landing.html" />
     <Content Include="Content\pagemodules\main-banner-hotel-landing-darker-image.html" />
     <Content Include="Content\pagemodules\main-banner-hotel-landing.html" />
+    <Content Include="Content\pagemodules\main-banner-video-background.html" />
     <Content Include="Content\pagemodules\main-banner-with-video.html" />
     <Content Include="Content\pagemodules\main-banner.html" />
     <Content Include="Content\pagemodules\map-direction.html" />
@@ -482,7 +565,15 @@
     <Content Include="Content\pagemodules\room-landing-standard-rooms.html" />
     <Content Include="Content\pagemodules\room-landing-suites-with-swipe.html" />
     <Content Include="Content\pagemodules\room-landing-suites.html" />
+    <Content Include="Content\pagemodules\room-landing-view-container-swipe.html" />
+    <Content Include="Content\pagemodules\room-landing-view-container.html" />
+    <Content Include="Content\pagemodules\room-landing-wings-explore-by-wings.html" />
+    <Content Include="Content\pagemodules\room-landing-wings-standard-rooms.html" />
+    <Content Include="Content\pagemodules\room-landing-wings-suites.html" />
+    <Content Include="Content\pagemodules\room-landing-wings-view-container-swipe.html" />
+    <Content Include="Content\pagemodules\room-landing-wings-view-container.html" />
     <Content Include="Content\pagemodules\room-type-hotel-landing.html" />
+    <Content Include="Content\pagemodules\room-type-wings.html" />
     <Content Include="Content\pagemodules\room-type.html" />
     <Content Include="Content\pagemodules\standard-rooms.html" />
     <Content Include="Content\pagemodules\suites.html" />
@@ -502,7 +593,19 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\img\bg\video-background" />
+    <Content Include="Content\js\module-animation.json" />
+    <Content Include="Content\pagemodules\img\bg\video-background" />
+    <Content Include="Content\pagemodules\img\content\SL-video.ogv" />
+    <Content Include="Content\pagemodules\img\content\SL-video.webm" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Resources\LanguageFiles\ContentTypeNames.xml" />
+    <Content Include="Resources\LanguageFiles\Display.xml" />
+    <Content Include="Resources\LanguageFiles\EditorHints.xml" />
+    <Content Include="Resources\LanguageFiles\GroupNames.xml" />
+    <Content Include="Resources\LanguageFiles\PropertyNames.xml" />
+    <Content Include="Resources\LanguageFiles\Views.xml" />
+    <Content Include="Resources\LanguageFiles\_ReadMe.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -592,21 +695,24 @@
     <Content Include="modules\_protected\Shell\Shell.zip" />
     <Content Include="modules\_protected\CMS\web.config" />
     <Content Include="modules\_protected\CMS\CMS.zip" />
-    <Content Include="Views\HotelPage\Index.cshtml" />
+    <Content Include="Views\Pages\HotelPage\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Layouts\_Root.cshtml" />
     <Content Include="Views\Shared\Layouts\_LeftNavigation.cshtml" />
     <Content Include="Views\StandardPage\Index.cshtml" />
     <Content Include="Views\Shared\PagePartials\PagePartial.cshtml" />
     <Content Include="Views\PagePartial\PagePartial.cshtml" />
-    <Content Include="Views\HotelModuleBlock\Index.cshtml" />
+    <Content Include="Views\Blocks\OverviewContentBlock\Index.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Shared\TemplateError.cshtml" />
     <Content Include="Views\Shared\TemplateHint.cshtml" />
-    <Content Include="Views\RoomSuiteListingPage\Index.cshtml" />
-    <Content Include="Views\RoomSuitePage\Index.cshtml" />
+    <Content Include="Views\Pages\RoomSuiteListingPage\Index.cshtml" />
+    <Content Include="Views\Pages\RoomSuitePage\Index.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Preview\Index.cshtml" />
+    <Content Include="Views\Shared\BookingPanel.cshtml" />
+    <Content Include="Views\Blocks\RoomContentBlock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
