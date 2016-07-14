@@ -1,0 +1,16 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model ShangriLa.CMS.SL.Web.Models.ViewModels.DefaultPageViewModel<ShangriLa.CMS.SL.Web.Models.Pages.StandardPage>
+
+@{
+    Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml";
+}
+<h1>
+    @Html.PropertyFor(x => x.CurrentPage.PageName)
+</h1>
+<div class="row">
+    <div class="span8 clearfix">
+        @Html.PropertyFor(x => x.CurrentPage.MainBody)
+    </div>
+</div>

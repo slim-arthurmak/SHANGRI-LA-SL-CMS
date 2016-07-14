@@ -1,0 +1,45 @@
+﻿@model ShangriLa.CMS.SL.Web.Models.Blocks.OverviewContentBlock
+
+@*<div class="span">
+        <div class="media">
+            <div class="mediaImg">
+                <img src="@Url.ContentUrl(Model.TeaserImage)" />
+            </div>
+            <div class="mediaText">
+                <h2>@Model.Title</h2>
+                <p>@Html.PropertyFor(x => x.Subtitle)</p>
+            </div>
+        </div>
+    </div>*@
+
+<!-- Module Paradise Found Starts Here-->
+<section id="overview" class="viewport-element overview-container section-row inpage-element">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="overview-left-container">
+                    <div class="section-header">
+                        <h2 class="section-heading">@Html.PropertyFor(m => m.Title)</h2>
+                        <div class="description">@Html.PropertyFor(m => m.ShortDescription)</div>
+                    </div>
+                    <div class="content-container">
+                        <p>@Html.PropertyFor(m => m.LongDescription)</p>
+                        <div class="row facilities">
+                            <div class="col-md-4 col-sm-4"><span class="icon-view">636 rooms in 3 wings</span></div>
+                            <div class="col-md-4 col-sm-4"><span class="icon-view">15 acres of lush greenery</span></div>
+                            <div class="col-md-4 col-sm-4"><span class="icon-view">8 bars &amp; restaurants</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="image-container scaled-image">
+                    @Html.PropertyFor(m => m.ContentImage)
+                    @*<img src="@Url.Content("~/Content/img/content/paradise-found.jpg")" alt="{CMS}">*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Module Paradise Found Ends Here -->
+

@@ -1,0 +1,112 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using ShangriLa.CMS.SL.Web.Business.Extensions;
+
+@model ShangriLa.CMS.SL.Web.Models.ViewModels.PropertyPageViewModel
+
+@*<h1>
+        @Html.PropertyFor(x => x.CurrentPage.PageName)
+    </h1>
+    <div class="row">
+        <div class="span8 clearfix">
+            @Html.PropertyFor(x => x.CurrentPage.MainBody)
+        </div>
+    </div>*@
+
+<section id="main-banner" class="viewport-element main-banner-hotel-landing lighter-text">
+    <div class="caption-container-hotel-landing">
+        @*<h1 class="heading">Shangri-La Hotel, Singapore</h1>
+        <p class="description">A lush, green sanctuary of calm in one of Asia's most dynamic modern cities, and the place where the legendary Shangri-La story first began.</p>*@
+        <h1 class="heading">@Html.PropertyFor(m => m.CurrentPage.HeroBanner.Title)</h1>
+        <p class="description">@Html.PropertyFor(m => m.CurrentPage.HeroBanner.ShortDescription)</p>
+        <div data-city="kowloon" data-lang="" class="climate-time-control">
+            <span class="cloud"> </span><span class="temp"> </span><span class="time"> </span>
+        </div>
+    </div>
+    <div class="image-container">
+        @Html.PropertyFor(m => m.CurrentPage.HeroBanner.DesktopImage)
+    @*<img src="img/content/main-banner-hotel-landing.jpg" alt="{CMS}">*@
+    </div>
+    <a href="#overview" class="explore-button icon-ios-arrow-down"><span></span></a>
+</section>
+
+@{ 
+    Html.RenderPartial("BookingPanel", Model.BookingPanel);
+ }
+
+<sections class="in-page-navigation sticked" data-height="38" style="top: 133px;">
+    <div class="container">
+        <div class="share-link"><a class="share-icon"><span>Share</span></a></div>
+        <div class="selected-item"><span class="icon-ios-arrow-down">Overview</span></div>
+        <ul class="horizontal-scroll">
+            <li class=""><a href="#overview">Overview</a></li>
+            <li class=""><a href="#rooms">Our rooms</a></li>
+            <li class=""><a href="#dining">Dining</a></li>
+            <li class=""><a href="#experience">Experience</a></li>
+            <li class=""><a href="#events">Events</a></li>
+            <li class="active"><a href="#gallery">Gallery</a></li>
+            <li class=""><a href="#location">Location</a></li>
+            <li class=""><a href="#offers">Offers</a></li>
+        </ul>
+    </div>
+</sections>
+<div class="inpage-container">
+
+    @*@{
+            Html.RenderCustomContentArea(Model.CurrentPage.SectionContentArea);
+        }*@
+
+    @Html.PropertyFor(x => x.CurrentPage.SectionContentArea, new
+   {
+       //CustomTag = "ul",
+       //CssClass = "list",
+       //ChildrenCustomTagName = "li",
+       //ChildrenCssClass = "list_item",
+       //Tag = string.Empty,
+       HasContainer = false
+   })
+</div>
+
+
+
+    <div class="room-contact-details">
+        <div class="container">
+            <ul class="room-contact-container row">
+                <li class="col-xs-12 col-sm-12 col-md-4">
+                    <div class="heading">Contact Shangri-La Hotel, Singapore</div>
+                    <p>
+                        <strong>Address: </strong>22 Orange Grove Road, 258350, Singapore
+                        <br><strong>Phone: </strong><span>(65) 6737 3644</span>
+                        <br><strong>Fax: </strong><span>(65) 6737 3257</span>
+                        <br><strong>Email: </strong><a href="mailto:sls@shangri-la.com;">sls@shangri-la.com</a>
+                    </p>
+                </li>
+                <li class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="heading accordion-header icon-accordian-plus">Check-In/Out</div>
+                    <div class="description">
+                        <p>
+                            Please note the check-in / out times below:
+                            <br><strong>Check-in:</strong>2pm
+                            <br><strong>Check-out: </strong>12 noon
+                        </p>
+                    </div>
+                </li>
+                <li class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="heading accordion-header icon-accordian-plus">Payments</div>
+                    <div class="description">
+                        <p>We accept the following payment methods:</p>
+                        <div class="payment-methods">
+                            <ul class="list-unstyled clearfix">
+                                <li><img width="24" height="24" src="@Url.Content("~/Content/img/content/amex-logo.png")" alt="{CMS}" class="retina-image"></li>
+                                <li><img width="30" height="22" src="@Url.Content("~/Content/img/content/diners-club-logo.png")" alt="{CMS}" class="retina-image"></li>
+                                <li><img width="28" height="22" src="@Url.Content("~/Content/img/content/jcb-logo.png")" alt="{CMS}" class="retina-image"></li>
+                                <li><img width="33" height="20" src="@Url.Content("~/Content/img/content/mastercard-logo.png")" alt="{CMS}" class="retina-image"></li>
+                                <li><img width="39" height="14" src="@Url.Content("~/Content/img/content/visa-logo.png")" alt="{CMS}" class="retina-image"></li>
+                                <li><img width="33" height="21" src="@Url.Content("~/Content/img/content/union-pay-logo.png")" alt="{CMS}" class="retina-image"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>

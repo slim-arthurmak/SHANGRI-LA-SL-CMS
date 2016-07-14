@@ -1,0 +1,168 @@
+﻿@model ShangriLa.CMS.SL.Web.Models.ViewModels.BookingPanelModel
+
+<!-- Module - Booking Panel Starts here-->
+<form id="bookingPanelForm">
+    <section id="booking-module" class="booking-panel">
+        <div class="container clearfix">
+            <div class="burger-menu-container">
+                <a href="javascript:void(0)" class="icon-menu"></a>
+            </div>
+            <div class="panel-block search-visible">
+                <div class="book-room-cta hidden-md hidden-lg"><a href="javascript:void(0)" class="icon-ios-arrow-down">Book a room</a></div>
+                <div class="form-elements-section clearfix">
+                    <div class="search-hotels-block">
+                        <div class="form-field">
+                            <div class="heading">Select Hotels</div>
+                            <div class="field-container">
+                                <div class="ui-textinput icon-ios-search">
+                                    <input type="text" name="searchItem" placeholder="Enter City or Hotel Name">
+                                    <a href="javascript:void(0)" class="close-btn icon-close"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="drop-search-panel shadow-box">
+                            <ul>
+                                <li><a href="javascript:void(0)">All Beijing Hotel</a></li>
+                                <li><a href="javascript:void(0)">China World Hotel, Beijing</a></li>
+                                <li><a href="javascript:void(0)">China World Summit Wing, Beijing</a></li>
+                                <li><a href="javascript:void(0)">Hotel Jen Upper East, Beijing</a></li>
+                                <li><a href="javascript:void(0)">Kerry Hotel, Beijing</a></li>
+                                <li><a href="javascript:void(0)">Shangri-La Hotel, Beijing</a></li>
+                                <li><a href="javascript:void(0)">Traders Hotel, Beijing</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="check-status-block">
+                        <div class="row">
+                            <div class="datepicker-container check-in col-md-6 no-gutter">
+                                <div class="form-field">
+                                    <div class="heading">Check-In</div>
+                                    <div class="field-container">
+                                        <div class="ui-textinput icon-calender">
+                                            <input type="text" name="checkindate" class="checkInSelector">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="datepicker-container check-out col-md-6 no-gutter">
+                                <div class="form-field">
+                                    <div class="heading">Check-Out</div>
+                                    <div class="field-container">
+                                        <div class="ui-textinput icon-calender">
+                                            <input type="text" name="checkoutdate" class="checkOutSelector">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="bookingBox"></div>
+                        </div>
+                    </div>
+                    <div class="room-guests-block">
+                        <div class="heading">Rooms and guests</div>
+                        <div class="drop-selector">
+                            <div class="guest-details">
+                                <div class="form-field">
+                                    <div class="field-container icon-ios-arrow-down">
+                                        <div class="ui-select"><span class="rooms">1 Room</span><span class="seperator"> / </span><span class="guests">1 Guest</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="drop-panel-block shadow-box">
+                                <div data-max-rooms="5" class="room-addition-block">
+                                    <div class="select-type-heading">
+                                        <div class="row">
+                                            <div class="col-xs-6 no-gutter">
+                                                <div class="heading">Adults</div>
+                                            </div>
+                                            <div class="col-xs-6 no-gutter">
+                                                <div class="heading">Children<span title="" class="tooltip-cta icon-information"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="room-addition-container">
+                                        <div class="room-block clearfix">
+                                            <div class="room-number">Room 1</div>
+                                            <div class="select-type">
+                                                <div class="row">
+                                                    <div class="adults col-xs-6 no-gutter">
+                                                        <div class="form-field">
+                                                            <div class="field-container ui-select-wrapper">
+                                                                <div class="ui-select icon-ios-arrow-down">
+                                                                    <select name="adults">
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="children col-xs-6 no-gutter">
+                                                        <div class="form-field">
+                                                            <div class="field-container ui-select-wrapper">
+                                                                <div class="ui-select icon-ios-arrow-down">
+                                                                    <select name="childrens">
+                                                                        <option>0</option>
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:void(0)" class="delete-room icon-close"></a>
+                                        </div>
+                                        <div class="add-room-cta"><a href="javascript:void(0)" class="add-room icon-accordian-plus">Add Room</a></div>
+                                        <div class="confirm-cta"><a href="javascript:void(0)" class="button-secondary">Confirm</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-container hidden-sm hidden-xs"><a href="javascript:void(0)" class="button-submit">GET THE BEST RATES</a></div>
+                    <div class="special-code-block">
+                        <a href="javascript:void(0)" class="special-code-cta">Apply Corporate / Special Rate (Optional)</a>
+                        <div class="special-code-container clearfix">
+                            <div class="heading">
+                                Corporate / Special Rate (Optional)
+                                <a href="javascript:void(0)" class="close-code-cta icon-close"></a>
+                            </div>
+                            <div class="code-type-block">
+                                <div class="form-field">
+                                    <div class="field-container ui-select-wrapper">
+                                        <div class="ui-select icon-ios-arrow-down">
+                                            <select name="corporatespecial">
+                                                <option>Corporate</option>
+                                                <option>Group</option>
+                                                <option>Promotion</option>
+                                                <option>Travel Agency</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="enter-code-block">
+                                <div class="form-field">
+                                    <div class="field-container">
+                                        <div class="ui-textinput">
+                                            <input type="text" name="corporatecode" placeholder="Enter Code">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-container hidden-md hidden-lg"><a href="javascript:void(0)" class="button-submit">GET THE BEST RATES</a></div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="room-results">
+        <div class="tool-tip-container">
+            <p>Children must be under 12 years of ages.</p>
+            <p>Check out our Children’s Meal Plan in our hotel websites.</p>
+            <p>Note: If there are 2 adults and more than 1 child in your group, please indicate the actual number of children and their ages under Special Requests. Our hotels will still try their best to accommodate your family and will inform you if we are not able to.</p>
+        </div>
+    </section>
+</form>
+<!-- Module - Booking Panel Ends here-->

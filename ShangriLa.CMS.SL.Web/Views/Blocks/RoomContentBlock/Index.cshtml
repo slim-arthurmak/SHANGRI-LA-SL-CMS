@@ -1,0 +1,110 @@
+﻿@model ShangriLa.CMS.SL.Web.Models.Blocks.RoomContentBlock
+
+<!-- Module Our Hotel rooms starts here-->
+<section id="rooms" class="section-row hotel-rooms-container inpage-element">
+    <div class="container carousel-container">
+        <div class="section-header read-more-section-header">
+            <h2 class="section-heading">@Html.PropertyFor(m => m.Title)</h2>
+            <p class="description">@Html.PropertyFor(m => m.ShortDescription)</p>
+            <a href="javascript:void(0)" class="read-more-droplink icon-ios-arrow-down">READ MORE</a>
+        </div>
+        <!-- All Room Type starts here-->
+        <div class="section-row room-type rooms-with-wings">
+            <div class="grid-medium-container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 no-gutter">
+                        <div class="type-container">
+                            <a href="#" class="room-title">Tower Wing</a>
+                            <p>Discover the classic grandeur of the hotel's original wing.</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 no-gutter">
+                        <div class="type-container">
+                            <a href="#" class="room-title">Garden Wing</a>
+                            <p>Explore nature at its most tranquil set amid our landscaped gardens.</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 no-gutter">
+                        <div class="type-container no-border">
+                            <a href="#" class="room-title">Valley Wing</a>
+                            <p>Experience the highest levels of hospitality for discerning travellers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- All Room Type Endss here-->
+        <div class="room-grid-list">
+            <div class="row">
+                <div class="owl-carousel mobile-carousel">
+                    <div class="item">
+                        <div class="col-md-12 no-gutter">
+                            <div class="full-panel-block">
+                                <div class="image-container scaled-image">
+                                    <a href="//players.brightcove.net/4554542031001/default_default/index.html?videoId=4898716212001" class="video-link icon-play-circle"></a>
+                                    <img src="@Url.Content("~/Content/img/content/hotel-landing-room-sml1.jpg")" alt="{CMS}">
+                                </div>
+                                <div class="caption-container shadow-box">
+                                    <div class="featured">Featured</div>
+                                    <h3 class="heading">Valley Wing Shangri-La Suite</h3>
+                                    <p class="description">Experience Shangri-La luxury at its finest. Spanning an incredible 348 sqm, the suite includes private butler, workout room, living and dining rooms and more.</p>
+                                    <div class="room-price">
+                                        <p>From <span class="price">HKD2,800 </span>Per night</p>
+                                    </div>
+                                    <div class="button-aligner"><a href="#" class="button-primary">Book Now</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-sm-6 col-xs-12 no-gutter">
+                            <div class="half-panel-block">
+                                <div class="image-container scaled-image"><img src="@Url.Content("~/Content/img/content/hotel-landing-room-sml1.jpg")" alt="{CMS}"></div>
+                                <div class="caption-container shadow-box mobile-equal-height-block">
+                                    <div class="featured">Featured</div>
+                                    <h3 class="heading">Tower Wing Executive Room</h3>
+                                    <p class="description">Our spacious and stylish Executive Rooms offer city skyline views through sweeping floor-to-ceiling windows, with a full range of amenities for business and leisure. </p>
+                                    <div class="room-price">
+                                        <p>From <span class="price">HKD2,800 </span>Per night</p>
+                                    </div>
+                                    <div class="button-aligner"><a href="#" class="button-primary">Book Now</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-sm-6 col-xs-12 no-gutter">
+                            <div class="half-panel-block">
+                                <div class="image-container scaled-image"><img src="@Url.Content("~/Content/img/content/hotel-landing-room-sml2.jpg")" alt="{CMS}"></div>
+                                <div class="caption-container shadow-box mobile-equal-height-block">
+                                    <div class="featured">Featured</div>
+                                    <h3 class="heading">Garden Wing Premier Balcony Suite</h3>
+                                    <p class="description">Our Premier Balcony Suites feature spacious bedrooms with separate living space. Ideal for entertaining, each balcony hosts a private Jacuzzi, BBQ grill and loungers. </p>
+                                    <div class="room-price">
+                                        <p>From <span class="price">HKD2,800 </span>Per night</p>
+                                    </div>
+                                    <div class="button-aligner"><a href="#" class="button-primary">Book Now                </a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Module - Trust You - Starts-->
+        <section class="trust-you-widget">
+            <div class="container shadow-box">
+                <div class="plugin">
+                    <iframe src="https://api.trustyou.com/hotels/aa951d42-1c1c-48de-aa67-a98b0a37fcde/seal.html?key=c0be95bb-5c02-4f39-adba-b1449ea0aa74&amp;size=xl" allowtransparency="true" frameborder="0" scrolling="no" height="144px" width="170px"></iframe>
+                    <!--img(src="img/content/tripadvisor-placeholder.png" alt="tripadvisor" class="retina-image" width="86" height="31")-->
+                </div>
+                <p>Wow. I always knew Hong Kong would be an amazing place, but this was really mind-blowing. The views of the harbour are truly incredible, like a city from the future.</p><span>Yan Lee, Taiwan</span>
+            </div>
+        </section>
+        <!-- Module - Trust You - Ends-->
+        <div class="view-all-button">
+            <!--a.button-secondary(href="#") Explore Wings--><a href="#" class="button-secondary">SEE ALL Rooms &amp; Suites</a>
+        </div>
+    </div>
+</section>
+<!-- Module Our Hotel rooms ends here-->

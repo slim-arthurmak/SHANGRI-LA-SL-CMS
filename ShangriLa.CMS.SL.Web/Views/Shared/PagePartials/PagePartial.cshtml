@@ -1,0 +1,20 @@
+﻿@using EPiServer.Core;
+@model ShangriLa.CMS.SL.Web.Models.Pages.SitePageData
+<div class="block span4">
+    <div class="border">
+        @if (Model.HasTemplate())
+        {
+            <a href="@Url.PageUrl(Model.LinkURL)">
+                <h2>@Model.PageName</h2>
+                <p>@Html.PropertyFor(x => x.TeaserText)</p>
+                <img src="@Url.ContentUrl(Model.PageImage)" />
+            </a>
+        }
+        else
+        {
+            <h2>@Model.PageName</h2>
+            <p>@Html.PropertyFor(x => x.TeaserText)</p>
+            <img src="@Url.ContentUrl(Model.PageImage)" />
+        }
+    </div>
+</div>

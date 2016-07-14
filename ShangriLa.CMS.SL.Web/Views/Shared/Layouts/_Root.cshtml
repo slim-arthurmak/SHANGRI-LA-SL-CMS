@@ -1,0 +1,75 @@
+﻿@using EPiServer.Framework.Web.Mvc.Html
+@using EPiServer.Core
+@using ShangriLa.CMS.SL.Web.Models.Pages;
+@using ShangriLa.CMS.SL.Web.Models.ViewModels;
+@using ShangriLa.CMS.SL.Web.Helpers
+@using System.Web.Optimization
+
+@model IPageViewModel<SitePageData>
+
+<!DOCTYPE html>
+<html lang="@Model.CurrentPage.LanguageBranch">
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@Model.CurrentPage.MetaTitle</title>
+    @if (Model.CurrentPage.DisableIndexing)
+    {
+        <meta name="robots" content="NOINDEX, NOFOLLOW">
+    }
+
+    @Html.CanonicalLink()
+    @Styles.Render("~/bundles/css")
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/vendors.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/base.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/modules.css")" />*
+
+    @Html.RenderExtendedCSS(Model.CurrentPage.CSS, Model.CurrentPage.CSSFiles)
+    @Scripts.Render("~/bundles/js")
+    @Html.RenderExtendedScriptFiles(Model.CurrentPage.ScriptFiles)
+    @Html.RequiredClientResources("Header") @*Enable components to require resources. For an example, see the view for VideoBlock.*@
+
+    @*<title>@Model.CurrentPage.Name</title>
+        <link rel="stylesheet" href="@Url.Content("~/Static/css/bootstrap.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/Static/css/bootstrap-responsive.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/Static/css/media.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/Static/css/style.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/Static/css/editmode.css")" />
+        <script type="text/javascript" src="@Url.Content("~/Static/js/jquery.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Static/js/bootstrap.js")"></script>
+
+        <link rel="stylesheet" href="@Url.Content("~/Content/css/vendors.css")"/>
+        <link rel="stylesheet" href= "@Url.Content("~/Content/css/base.css")"/>
+        <link rel="stylesheet" href= "@Url.Content("~/Content/css/modules.css")"/>*@
+</head>
+<body>
+    @Html.RenderEPiServerQuickNavigator()
+    @Html.FullRefreshPropertiesMetaData()
+    <div class="site-wrapper">
+        @if (!Model.Layout.HideHeader)
+        {
+            Html.RenderPartial("Header", Model);
+        }
+        @RenderBody()
+        @if (!Model.Layout.HideHeader)
+        {
+            Html.RenderPartial("Footer", Model);
+        }
+    </div>
+    @Html.RequiredClientResources("Footer")
+    @Html.RenderExtendedScripts(Model.CurrentPage.Scripts)
+
+    <script src="@Url.Content("~/Content/js/waypoint.min.js")"></script>
+    <!-- to avoid stripping of previous line-->
+    <script src="@Url.Content("~/Content/js/vendors.js")"></script>
+    <script src="@Url.Content("~/Content/js/common.js")"></script>
+    <!-- to avoid stripping of previous line-->
+    <script src="@Url.Content("~/Content/js/modules.js")"></script>
+    <!--CMS FOOTER SCRIPTS AND TAGS OUTPUT HERE-->
+</body>
+
+</html>
