@@ -9,6 +9,8 @@ using EPiServer.Core;
 using EPiServer.Filters;
 using EPiServer.Web;
 
+using ShangriLa.CMS.SL.Web.Models.Blocks;
+
 namespace ShangriLa.CMS.SL.Web.Business
 {
     public class ContentLocator
@@ -93,6 +95,22 @@ namespace ShangriLa.CMS.SL.Web.Business
             }
 
             return _pageCriteriaQueryService.FindPagesWithCriteria(pageLink, criteria);
+        }
+
+        /// <summary>
+        /// Returns all contact pages beneath the main contacts container
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<CountryBlock> GetCountryBlocks()
+        {
+            var countryBlockFolderReference = _contentLoader.Get<StartPage>(SiteDefinition.Current.StartPage).CountryBlockFolderReference;
+
+            if (ContentReference.IsNullOrEmpty(countryBlockFolderReference))
+            {
+                throw new ConfigurationErrorsException("No country block folder specified in site settings, unable to retrieve country blocks");
+            }
+
+            return _contentLoader.GetChildren<CountryBlock>(countryBlockFolderReference).OrderBy(p => p.CountryName);
         }
 
         /*

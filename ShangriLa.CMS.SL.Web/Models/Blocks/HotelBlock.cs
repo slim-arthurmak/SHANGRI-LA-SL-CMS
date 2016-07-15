@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
+using EPiServer;
 
 namespace ShangriLa.CMS.SL.Web.Models.Blocks
 {
@@ -64,24 +65,24 @@ namespace ShangriLa.CMS.SL.Web.Models.Blocks
 
         [Display(
             Name = "PostalCode",
-            Order = 10)]
+            Order = 11)]
         public virtual ContentReference PostalCode { get; set; }
 
 
 
         [Display(
             Name = "Latitude",
-            Order = 11)]
+            Order = 12)]
         public virtual string Latitude { get; set; }
 
         [Display(
             Name = "Longitude",
-            Order = 12)]
+            Order = 13)]
         public virtual string Longitude { get; set; }
 
         [Display(
             Name = "Address",
-            Order = 13)]
+            Order = 14)]
         public virtual string Address { get; set; }
 
         [Display(
@@ -106,25 +107,25 @@ namespace ShangriLa.CMS.SL.Web.Models.Blocks
         public virtual string Email { get; set; }
 
 
-        [Display(Name = "Total Guest Rooms", Order = 10)]
+        [Display(Name = "Total Guest Rooms", Order = 21)]
         public virtual int TotalGuestRooms { get; set; }
 
-        [Display(Name = "Check-in Time", Order = 10)]
+        [Display(Name = "Check-in Time", Order = 22)]
         public virtual string CheckInTime { get; set; }
 
-        [Display(Name = "Check-out Time", Order = 11)]
+        [Display(Name = "Check-out Time", Order = 22)]
         public virtual string CheckOutTime { get; set; }
 
-        [Display(Name = "Payment Options", Order = 12)]
+        [Display(Name = "Payment Options", Order = 23)]
         public virtual ContentArea PaymentOptions { get; set; }
 
-        [Display(Name = "Is Non-Smoking Hotel", Order = 21)]
+        [Display(Name = "Is Non-Smoking Hotel", Order = 31)]
         public virtual bool IsNonSmokingHotel { get; set; }
 
-        [Display(Name = "IsResort", Order = 22)]
+        [Display(Name = "IsResort", Order = 32)]
         public virtual bool IsResort { get; set; }
 
-        [Display(Name = "Bookable", Order = 23)]
+        [Display(Name = "Bookable", Order = 33)]
         public virtual bool Bookable { get; set; }
 
         [Display(
@@ -132,42 +133,42 @@ namespace ShangriLa.CMS.SL.Web.Models.Blocks
             GroupName = Global.GroupNames.Social,
             Description = "",
             Order = 1)]
-        public virtual string Facebook { get; set; }
+        public virtual Url Facebook { get; set; }
 
         [Display(
             Name = "Twitter",
             GroupName = Global.GroupNames.Social,
             Description = "",
             Order = 2)]
-        public virtual string Twitter { get; set; }
+        public virtual Url Twitter { get; set; }
 
         [Display(
             Name = "Youtube ",
             GroupName = Global.GroupNames.Social,
             Description = "",
             Order = 3)]
-        public virtual string Youtube { get; set; }
+        public virtual Url Youtube { get; set; }
 
         [Display(
             Name = "GooglePlus  ",
             GroupName = Global.GroupNames.Social,
             Description = "",
             Order = 4)]
-        public virtual string GooglePlus { get; set; }
+        public virtual Url GooglePlus { get; set; }
 
         [Display(
             Name = "Youku",
             GroupName = Global.GroupNames.Social,
             Description = "",
             Order = 5)]
-        public virtual string Youku { get; set; }
+        public virtual Url Youku { get; set; }
 
         [Display(
             Name = "Weibo",
             GroupName = Global.GroupNames.Social,
             Description = "",
             Order = 5)]
-        public virtual string Weibo { get; set; }
+        public virtual Url Weibo { get; set; }
 
     }
 }

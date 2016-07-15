@@ -253,8 +253,10 @@
     <Compile Include="Business\EmailAddressAttribute.cs" />
     <Compile Include="Business\ExtensionMethods.cs" />
     <Compile Include="Business\Extensions\ContentAreaExtensions.cs" />
+    <Compile Include="Business\Extensions\EditorDescriptors\CountryBlockSelectionFactory.cs" />
     <Compile Include="Business\IModifyLayout.cs" />
     <Compile Include="Business\Initialization\BundleConfig.cs" />
+    <Compile Include="Business\Initialization\RestrictedContentFolderInitializationModule.cs" />
     <Compile Include="Business\Initialization\CustomizedRenderingInitialization.cs" />
     <Compile Include="Business\Initialization\DependencyResolverInitialization.cs" />
     <Compile Include="Business\Initialization\DisplayModesInitialization.cs" />
@@ -279,9 +281,16 @@
     <Compile Include="Controllers\Pages\RoomSuitePageController.cs" />
     <Compile Include="Business\Extensions\EditorDescriptors\HotelBlockReferenceEditorDescriptor.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="Models\Blocks\CarouselBlock.cs" />
+    <Compile Include="Models\Blocks\CarouselItemBlock.cs" />
+    <Compile Include="Models\Blocks\CityBlock.cs" />
+    <Compile Include="Models\Blocks\CountryBlock.cs" />
     <Compile Include="Models\Blocks\HotelHomepageContentBlockData.cs" />
     <Compile Include="Models\Blocks\RoomContentBlock.cs" />
+    <Compile Include="Models\Blocks\RoomGroupBlock.cs" />
     <Compile Include="Models\Blocks\RoomSuiteBlock.cs" />
+    <Compile Include="Models\Folders\CityBlockContentFolder.cs" />
+    <Compile Include="Models\Folders\CountryBlockContentFolder.cs" />
     <Compile Include="Models\ViewModels\BookingPanelModel.cs" />
     <Compile Include="Models\Blocks\CommonBlock.cs" />
     <Compile Include="Controllers\DefaultPageController.cs" />
@@ -732,16 +741,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:62739/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

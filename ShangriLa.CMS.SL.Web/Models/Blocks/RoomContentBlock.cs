@@ -19,5 +19,13 @@ namespace ShangriLa.CMS.SL.Web.Models.Blocks
             Order = 1)]
         public virtual string Name { get; set; }
          */
+
+        [CultureSpecific]
+        [Display(
+           Name = "Name",
+           Description = "Name field's description",
+           GroupName = SystemTabNames.Content,
+           Order = 1)]
+        public virtual string Name { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace ShangriLa.CMS.SL.Web.Models.Blocks
                     Order = 1)]
         [UIHint(UIHint.Image)]
         //[RequiredImageSize(Width = 1300, Height = 500, ErrorMessage = "Carousel image must be of resolution 1300x500")]
-        [Required(ErrorMessage = "Hero Image (Desktop) is required")]
+        //[Required(ErrorMessage = "Hero Image (Desktop) is required")]
         public virtual ContentReference DesktopImage { get; set; }
 
         [Display(
@@ -40,7 +40,7 @@ namespace ShangriLa.CMS.SL.Web.Models.Blocks
         //[Required(ErrorMessage = "Hero Image (Mobile) is required")]
         public virtual ContentReference MobileImage { get; set; }
 
-        [Required(ErrorMessage = "Alternate text is required.")]
+        //[Required(ErrorMessage = "Alternate text is required.")]
         [Display(Order = 4, Name = "Alternate Text", Description = "* Required")]
         public virtual string AlternateText { get; set; }
 

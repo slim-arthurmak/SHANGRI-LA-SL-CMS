@@ -4,6 +4,8 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
+using EPiServer.DataAnnotations;
+using EPiServer.Web;
 
 using ShangriLa.CMS.SL.Web.Models.Blocks;
 
@@ -69,6 +71,17 @@ namespace ShangriLa.CMS.SL.Web.Models.Pages
 
         [Display(GroupName = Global.GroupNames.SiteSettings)]
         public virtual SiteLogotypeBlock SiteLogotype { get; set; }
+
+        [Display(GroupName = Global.GroupNames.SiteSettings)]
+        [UIHint(UIHint.BlockFolder)]
+        public virtual ContentReference CountryBlockFolderReference { get; set; }
+
+        [Display(GroupName = Global.GroupNames.SiteSettings)]
+        [UIHint(UIHint.BlockFolder)]
+        [AllowedTypes(typeof(ContentFolder))]
+        public virtual ContentReference CityBlockFolderReference { get; set; }
+
+
 
     }
 }
